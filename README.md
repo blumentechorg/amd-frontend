@@ -1,6 +1,6 @@
 # AMD Facility management
 
-![Project intro image](./Homepage.png)
+![Project intro image](./Intro.png)
 
 AMD Facility management is an indigenous Facility Management company fully incorporated in
 Nigeria. We provide services for commercial and residential buildings,
