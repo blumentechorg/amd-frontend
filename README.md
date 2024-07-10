@@ -75,7 +75,7 @@ To get started with this, follow these steps:
 
 ```bash
 ## Don't forget to ⭐ star and fork it first :)
-git clone https://github.com/<your_username>/AreaFinder.git
+git clone https://github.com/<your_username>/amd-frontend.git
 ```
 
 2. Install the dependencies:
