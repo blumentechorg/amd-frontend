@@ -144,6 +144,10 @@ body {
   @apply flex h-[58px] items-center justify-center rounded-full bg-[#044982] px-10 text-[#FFFFFF] transition-colors hover:bg-[#2952CC] hover:text-[#FFFFFF] focus:bg-[#2952CC] active:bg-[#061E66]  max-sm:h-10 max-sm:w-full;
 }
 
+.button-rounded {
+  @apply flex h-[58px] items-center justify-center rounded-lg bg-[#044982] px-10 text-[#FFFFFF] transition-colors hover:bg-[#2952CC] hover:text-[#FFFFFF] focus:bg-[#2952CC] active:bg-[#061E66]  max-sm:h-10 max-sm:w-full;
+}
+
 .button-outline {
   @apply flex h-[58px] items-center justify-center rounded-full border border-[#16194A] p-4 text-[#16194A] ease-out  hover:border-2 active:border-3 max-sm:h-10;
 }
