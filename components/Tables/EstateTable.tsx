@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"
 import MoreVertIcon from "@mui/icons-material/MoreVert"
 import ReceiptModal from "components/Modals/ViewReceiptModal"
+import { useRouter } from "next/navigation"
 
 interface Column {
   Header: string
@@ -80,6 +81,7 @@ export default function CustomTable({ columns, data, showDropdown = true, tableT
   const paginatedData = filteredData.slice(0, itemsPerPage)
 
   const renderDropdownOptions = (index: number, row: any) => {
+    const router = useRouter()
     if (tableType === "estate") {
       return (
         <div className="absolute right-0 z-10 mt-2 w-48 rounded-md bg-white shadow-lg">
@@ -107,6 +109,34 @@ export default function CustomTable({ columns, data, showDropdown = true, tableT
             </button>
             <button className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">
               Send Eviction Notice
+            </button>
+          </div>
+        </div>
+      )
+    } else if (tableType === "property") {
+      return (
+        <div className="absolute right-0 z-10 mt-2 w-48 rounded-md bg-white shadow-lg">
+          <div className="py-1">
+            <button
+              className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
+              onClick={(event) => handleViewReceipt(event, row)}
+            >
+              View Receipt
+            </button>
+            <button
+              onClick={() => router.push(`/properties/property/${row.propertyId}`)}
+              className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
+            >
+              View Property
+            </button>
+            <button className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">
+              Deactivate Account
+            </button>
+            <button className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">
+              Unlink Property ID
+            </button>
+            <button className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">
+              Remove Tenant
             </button>
           </div>
         </div>
@@ -145,9 +175,13 @@ export default function CustomTable({ columns, data, showDropdown = true, tableT
                 {columns.map((column, cellIndex) => (
                   <td
                     key={`${column.Header}-${index}`}
-                    className={`border-l border-gray-200 px-4 py-3 text-left ${cellIndex === 0 ? "pl-4" : ""} ${
-                      column.accessor === "rentStatus" && row.rentStatus === "Overdue" ? "bg-[#FF002E] text-white" : ""
-                    }`}
+                    className={`border-l border-gray-200 px-4 py-3 text-left ${
+                      cellIndex === 0 ? "pl-4" : "font-medium"
+                    } 
+                   ${column.accessor === "rentStatus" && row.rentStatus === "Overdue" ? "bg-[#FF002E] text-white" : ""} 
+                   ${column.accessor === "rentStatus" && row.rentStatus === "Vacant" ? "text-[#FF0000]" : ""}
+                   ${column.accessor === "rentStatus" && row.rentStatus === "Occupied" ? "text-[#0BB197]" : ""}
+                   `}
                   >
                     {typeof column.accessor === "function" ? column.accessor(row) : row[column.accessor]}
                   </td>

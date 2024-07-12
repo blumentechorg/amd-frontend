@@ -23,7 +23,7 @@ const DashboardNav = () => {
           </Link>
 
           <div className=" flex h-[45px] w-[380px] items-center justify-between  gap-3 rounded-full bg-[#F3F3F3] px-3 py-1 text-[#707070]">
-            <Image src="DashboardImages/Search.svg" width={16} height={16} alt="dekalo" />
+            <Image src="/DashboardImages/Search.svg" width={16} height={16} alt="dekalo" />
             <input
               type="text"
               id="search"
@@ -43,13 +43,13 @@ const DashboardNav = () => {
               href="/"
               className="flex h-[50px] w-[50px] content-center items-center justify-center rounded-full bg-[#EDF2F7]"
             >
-              <Image src="DashboardImages/fi-sr-bell.svg" width={24} height={24} alt="avatar" />
+              <Image src="/DashboardImages/fi-sr-bell.svg" width={24} height={24} alt="avatar" />
             </Link>
             <div className="flex h-[50px] items-center justify-center gap-1 rounded-full bg-[#EDF2F7] px-1">
-              <Image src="DashboardImages/User.svg" width={40} height={40} alt="avatar" />
+              <Image src="/DashboardImages/User.svg" width={40} height={40} alt="avatar" />
               <p className=" font-regular content-center text-sm">Jhon Doe</p>
 
-              <Image className="mr-4" src="DashboardImages/dropdown.svg" width={15.68} height={15.68} alt="avatar" />
+              <Image className="mr-4" src="/DashboardImages/dropdown.svg" width={15.68} height={15.68} alt="avatar" />
             </div>
           </div>
         </div>

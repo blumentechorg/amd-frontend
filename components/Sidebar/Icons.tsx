@@ -35,3 +35,7 @@ export const AdminIcon = ({ isActive }: { isActive: boolean }) => (
 export const LogoutIcon = ({ isActive }: { isActive: boolean }) => (
   <Image src={isActive ? "/Icons/Utility-active.svg" : "/Icons/Logout.svg"} alt="Utility" width={20} height={20} />
 )
+
+export const PropertyIcon = ({ isActive }: { isActive: boolean }) => (
+  <Image src={isActive ? "/Icons/Property-active.svg" : "/Icons/Property.svg"} alt="Utility" width={20} height={20} />
+)
