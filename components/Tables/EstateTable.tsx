@@ -1,24 +1,28 @@
-import Image from "next/image"
 import React, { useState, useEffect, useRef } from "react"
 import MoreVertIcon from "@mui/icons-material/MoreVert"
+import ReceiptModal from "components/Modals/ViewReceiptModal"
 
-interface TableColumn {
+interface Column {
   Header: string
   accessor: string | ((row: any) => any)
 }
 
 interface CustomTableProps {
-  columns: TableColumn[]
+  columns: Column[]
   data: any[]
+  showDropdown?: boolean
+  tableType: string
 }
 
-export default function CustomTable({ columns, data }: CustomTableProps) {
+export default function CustomTable({ columns, data, showDropdown = true, tableType }: CustomTableProps) {
   const [sortBy, setSortBy] = useState<string | null>(null)
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc")
   const [searchQuery, setSearchQuery] = useState("")
   const [dropdownOpen, setDropdownOpen] = useState<number | null>(null)
   const [itemsPerPage, setItemsPerPage] = useState(10)
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const [isReceiptModalOpen, setIsReceiptModalOpen] = useState(false)
+  const [selectedReceiptData, setSelectedReceiptData] = useState<any>(null)
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -66,7 +70,49 @@ export default function CustomTable({ columns, data }: CustomTableProps) {
     setDropdownOpen(dropdownOpen === index ? null : index)
   }
 
+  const handleViewReceipt = (event: React.MouseEvent<HTMLButtonElement>, receiptData: any) => {
+    event.stopPropagation()
+    console.log("Opening receipt modal with data:", receiptData) // Debug log
+    setSelectedReceiptData(receiptData)
+    setIsReceiptModalOpen(true)
+  }
+
   const paginatedData = filteredData.slice(0, itemsPerPage)
+
+  const renderDropdownOptions = (index: number, row: any) => {
+    if (tableType === "estate") {
+      return (
+        <div className="absolute right-0 z-10 mt-2 w-48 rounded-md bg-white shadow-lg">
+          <div className="py-1">
+            <button className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">Edit</button>
+            <button className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">Delete</button>
+          </div>
+        </div>
+      )
+    } else if (tableType === "rent") {
+      return (
+        <div className="absolute right-0 z-10 mt-2 w-48 rounded-md bg-white shadow-lg">
+          <div className="py-1">
+            <button
+              className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
+              onClick={(event) => handleViewReceipt(event, row)}
+            >
+              View Receipt
+            </button>
+            <button className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">
+              Notify Tenant
+            </button>
+            <button className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">
+              Contact Tenant
+            </button>
+            <button className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">
+              Send Eviction Notice
+            </button>
+          </div>
+        </div>
+      )
+    }
+  }
 
   return (
     <div className="">
@@ -90,7 +136,7 @@ export default function CustomTable({ columns, data }: CustomTableProps) {
                   {sortBy === column.accessor && (sortDirection === "asc" ? " 🔼" : " 🔽")}
                 </th>
               ))}
-              <th className="border-l bg-[#2D9DFD0D] px-4 py-3 text-left"></th> {/* For action button */}
+              {showDropdown && <th className="border-l bg-[#2D9DFD0D] px-4 py-3 text-left"></th>}
             </tr>
           </thead>
           <tbody>
@@ -99,35 +145,35 @@ export default function CustomTable({ columns, data }: CustomTableProps) {
                 {columns.map((column, cellIndex) => (
                   <td
                     key={`${column.Header}-${index}`}
-                    className={`border-l border-gray-200 px-4 py-3 text-left ${cellIndex === 0 ? "pl-4" : ""}`}
+                    className={`border-l border-gray-200 px-4 py-3 text-left ${cellIndex === 0 ? "pl-4" : ""} ${
+                      column.accessor === "rentStatus" && row.rentStatus === "Overdue" ? "bg-[#FF002E] text-white" : ""
+                    }`}
                   >
                     {typeof column.accessor === "function" ? column.accessor(row) : row[column.accessor]}
                   </td>
                 ))}
-                <td className="border-l border-gray-200 py-3 text-center">
-                  <div className="relative" ref={dropdownRef}>
-                    <button onClick={() => handleDropdownToggle(index)}>
-                      <MoreVertIcon className="text-[#4D4D4D] opacity-30" />
-                    </button>
-                    {dropdownOpen === index && (
-                      <div className="absolute right-0 z-10 mt-2 w-48 rounded-md bg-white shadow-lg">
-                        <div className="py-1">
-                          <button className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">
-                            Edit
-                          </button>
-                          <button className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">
-                            Delete
-                          </button>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </td>
+                {showDropdown && (
+                  <td className="border-l border-gray-200 py-3 text-center">
+                    <div className="relative">
+                      <button onClick={() => handleDropdownToggle(index)}>
+                        <MoreVertIcon className="text-[#4D4D4D] opacity-50" />
+                      </button>
+                      {dropdownOpen === index && renderDropdownOptions(index, row)}
+                    </div>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      {isReceiptModalOpen && (
+        <ReceiptModal
+          isOpen={isReceiptModalOpen}
+          onClose={() => setIsReceiptModalOpen(false)}
+          receiptData={selectedReceiptData}
+        />
+      )}
     </div>
   )
 }

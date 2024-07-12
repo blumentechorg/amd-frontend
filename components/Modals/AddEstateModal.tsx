@@ -1,6 +1,8 @@
 "use client"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { IoClose } from "react-icons/io5"
+import AOS from "aos"
+import "aos/dist/aos.css"
 
 interface AddEstateModalProps {
   isOpen: boolean
@@ -30,11 +32,23 @@ const AddEstateModal: React.FC<AddEstateModalProps> = ({ isOpen, onClose, onSave
     onClose()
   }
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    })
+  }, [])
+
   if (!isOpen) return null
 
   return (
     <div className="fixed inset-0 z-50  flex items-center justify-center bg-black bg-opacity-50">
-      <div className="relative rounded-md bg-white p-10 xl:max-w-[783px]">
+      <div
+        className="relative rounded-md bg-white p-10 xl:max-w-[783px]"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        data-aos-delay="500"
+      >
         <button onClick={onClose} className="absolute -right-7 -top-7 rounded-full bg-[#FFFFFF] p-2">
           <IoClose size={16} />
         </button>

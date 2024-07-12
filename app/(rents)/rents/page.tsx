@@ -12,101 +12,98 @@ import CustomTable from "components/Tables/EstateTable"
 import Image from "next/image"
 import AddEstateModal from "components/Modals/AddEstateModal"
 
-interface Estate {
+interface Rents {
   sn: number
-  name: string
-  location: string
-  noOfHouses: number
-  percentageOccupied: string
-  date: string
+  propertyId: string
+  estate: string
+  tenant: string
+  rentStatus: string
+  rentStartDate: string
+  rentEndDate: string
 }
 
 export default function Dashboard() {
-  const [estates, setEstates] = useState<Estate[]>([
+  const [rents, setRents] = useState<Rents[]>([
     {
       sn: 1,
-      name: "Dantata Estate 1",
-      location: "22 Kado Rd, Jabi, Abuja FCT, 23401",
-      noOfHouses: 200,
-      percentageOccupied: "40%",
-      date: "15 May, 2020 8:00 am",
+      propertyId: "DAN-0210",
+      estate: "Dantata Estate 1",
+
+      tenant: "Musa Aliyu",
+      rentStatus: "Paid",
+      rentStartDate: "15 May, 2020 8:00 am",
+      rentEndDate: "15 May, 2020 8:00 am",
     },
     {
       sn: 2,
-      name: "Dantata Estate 2",
-      location: "22 Kado Rd, Jabi, Abuja FCT, 23401",
-      noOfHouses: 200,
-      percentageOccupied: "40%",
-      date: "15 May, 2020 8:00 am",
+      propertyId: "DAN-0210",
+      estate: "Dantata Estate 2",
+
+      tenant: "Zainab Shehu",
+      rentStatus: "Overdue",
+      rentStartDate: "15 May, 2020 8:00 am",
+      rentEndDate: "15 May, 2020 8:00 am",
     },
     {
       sn: 3,
-      name: "Dantata Estate 3",
-      location: "22 Kado Rd, Jabi, Abuja FCT, 23401",
-      noOfHouses: 200,
-      percentageOccupied: "40%",
-      date: "15 May, 2020 8:00 am",
+      propertyId: "DAN-0210",
+      estate: "Blumen Estate 1",
+
+      tenant: "John Doe",
+      rentStatus: "Paid",
+      rentStartDate: "15 May, 2020 8:00 am",
+      rentEndDate: "15 May, 2020 8:00 am",
     },
     {
       sn: 4,
-      name: "Dantata Estate 4",
-      location: "22 Kado Rd, Jabi, Abuja FCT, 23401",
-      noOfHouses: 200,
-      percentageOccupied: "40%",
-      date: "15 May, 2020 8:00 am",
+      propertyId: "DAN-0210",
+      estate: "Blumen Estate 1",
+      tenant: "John Doe",
+      rentStatus: "Paid",
+      rentStartDate: "15 May, 2020 8:00 am",
+      rentEndDate: "15 May, 2020 8:00 am",
     },
     {
       sn: 5,
-      name: "Dantata Estate 5",
-      location: "22 Kado Rd, Jabi, Abuja FCT, 23401",
-      noOfHouses: 200,
-      percentageOccupied: "40%",
-      date: "15 May, 2020 8:00 am",
+      propertyId: "DAN-0210",
+      estate: "Blumen Estate 1",
+      tenant: "John Doe",
+      rentStatus: "Paid",
+      rentStartDate: "15 May, 2020 8:00 am",
+      rentEndDate: "15 May, 2020 8:00 am",
     },
     {
       sn: 6,
-      name: "Blumen Estate 1",
-      location: "22 Kado Rd, Jabi, Abuja FCT, 23401",
-      noOfHouses: 200,
-      percentageOccupied: "40%",
-      date: "15 May, 2020 8:00 am",
+      propertyId: "DAN-0210",
+      estate: "Blumen Estate 1",
+      tenant: "John Doe",
+      rentStatus: "Paid",
+      rentStartDate: "15 May, 2020 8:00 am",
+      rentEndDate: "15 May, 2020 8:00 am",
     },
     {
       sn: 7,
-      name: "AMD Estate 1",
-      location: "22 Kado Rd, Jabi, Abuja FCT, 23401",
-      noOfHouses: 200,
-      percentageOccupied: "40%",
-      date: "15 May, 2020 8:00 am",
+      propertyId: "DAN-0210",
+      estate: "Blumen Estate 1",
+      tenant: "John Doe",
+      rentStatus: "Paid",
+      rentStartDate: "15 May, 2020 8:00 am",
+      rentEndDate: "15 May, 2020 8:00 am",
     },
     {
       sn: 8,
-      name: "Squid Estate 1",
-      location: "22 Kado Rd, Jabi, Abuja FCT, 23401",
-      noOfHouses: 200,
-      percentageOccupied: "40%",
-      date: "15 May, 2020 8:00 am",
+      propertyId: "DAN-0210",
+      estate: "Blumen Estate 1",
+      tenant: "John Doe",
+      rentStatus: "Paid",
+      rentStartDate: "15 May, 2020 8:00 am",
+      rentEndDate: "15 May, 2020 8:00 am",
     },
-    {
-      sn: 9,
-      name: "Dantata Estate 1",
-      location: "22 Kado Rd, Jabi, Abuja FCT, 23401",
-      noOfHouses: 200,
-      percentageOccupied: "40%",
-      date: "15 May, 2020 8:00 am",
-    },
-    {
-      sn: 10,
-      name: "Dantata Estate 1",
-      location: "22 Kado Rd, Jabi, Abuja FCT, 23401",
-      noOfHouses: 200,
-      percentageOccupied: "40%",
-      date: "15 May, 2020 8:00 am",
-    },
+
     // ...other estates
   ])
   const [currentPage, setCurrentPage] = useState(1)
-  const [itemsPerPage, setItemsPerPage] = useState(4)
+  const [itemsPerPage, setItemsPerPage] = useState(8)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
 
@@ -120,25 +117,28 @@ export default function Dashboard() {
   const columns = useMemo(
     () => [
       { Header: "S/N", accessor: "sn" },
-      { Header: "Estate Name", accessor: "name" },
-      { Header: "Location", accessor: "location" },
-      { Header: "No. of Houses", accessor: "noOfHouses" },
-      { Header: "% Occupied", accessor: "percentageOccupied" },
-      { Header: "Date", accessor: "date" },
+      { Header: "Property ID", accessor: "propertyId" },
+      { Header: "Estate", accessor: "estate" },
+      { Header: "Tenant", accessor: "tenant" },
+      { Header: "Rent Status", accessor: "rentStatus" },
+      { Header: "Rent Start Date", accessor: "rentStartDate" },
+      { Header: "Rent End Date", accessor: "rentEndDate" },
     ],
     []
   )
 
   const filteredEstates = useMemo(
     () =>
-      estates.filter(
-        (estate) =>
-          estate.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          estate.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          estate.noOfHouses.toString().includes(searchQuery) ||
-          estate.date.toString().includes(searchQuery.toLowerCase())
+      rents.filter(
+        (rent) =>
+          rent.propertyId.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          rent.tenant.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          rent.rentStatus.toString().includes(searchQuery) ||
+          rent.rentStartDate.toString().includes(searchQuery.toLowerCase()) ||
+          rent.estate.toString().includes(searchQuery.toLowerCase()) ||
+          rent.rentEndDate.toString().includes(searchQuery.toLowerCase())
       ),
-    [estates, searchQuery]
+    [rents, searchQuery]
   )
 
   const paginatedData = useMemo(
@@ -146,8 +146,8 @@ export default function Dashboard() {
     [filteredEstates, currentPage, itemsPerPage]
   )
 
-  const handleAddEstate = (newEstate: Estate) => {
-    setEstates((prevEstates) => [...prevEstates, { ...newEstate, sn: prevEstates.length + 1 }])
+  const handleAddEstate = (newRent: Rents) => {
+    setRents((prevRents) => [...prevRents, { ...newRent, sn: prevRents.length + 1 }])
   }
 
   return (
@@ -160,25 +160,13 @@ export default function Dashboard() {
             <div className="flex w-full gap-6  px-10 max-md:flex-col max-md:px-4 max-md:pt-6 md:mb-16">
               <div className="w-full ">
                 <div className="my-7 flex items-center justify-between">
-                  <h5 className="text-[28px] font-medium">Estates</h5>
+                  <h5 className="text-[28px] font-medium">Rents</h5>
                   <div className="relative"></div>
                   <div className="flex items-center gap-2">
-                    <p className="opacity-50">Estates</p>
+                    <p className="opacity-50">Rents</p>
                     <KeyboardArrowRightIcon className="opacity-50" />
                     <p className="opacity-50">Dashboard</p>
                   </div>
-                </div>
-
-                <div className="mb-4 w-full overflow-hidden rounded-md">
-                  <LoadScript googleMapsApiKey="AIzaSyBKHZ5C24eYH-MccKBSniBl3mT5MjBhJYY">
-                    <GoogleMap
-                      mapContainerStyle={{ height: "350px", width: "100%" }}
-                      center={{ lat: 9.060352, lng: 7.4678272 }}
-                      zoom={14}
-                    >
-                      <Marker position={{ lat: 9.060352, lng: 7.4678272 }} />
-                    </GoogleMap>
-                  </LoadScript>
                 </div>
 
                 <div className="rounded-lg bg-white py-7">
@@ -214,12 +202,12 @@ export default function Dashboard() {
                       onClick={() => setIsModalOpen(true)}
                       className="button-rounded flex items-center gap-2 rounded-md"
                     >
-                      Add new Estate
+                      Add new Rent
                       <Image src="DashboardImages/Vector.svg" width={11.88} height={11.88} alt="" />
                     </button>
                   </div>
 
-                  <CustomTable tableType="estate" columns={columns} data={paginatedData} />
+                  <CustomTable tableType="rent" columns={columns} data={paginatedData} />
 
                   <CustomPagination
                     totalItems={filteredEstates.length}

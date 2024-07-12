@@ -25,7 +25,7 @@ export default function CustomPagination({
   }
 
   return (
-    <div className="mt-4 flex items-center justify-end gap-2">
+    <div className="mt-4 flex items-center justify-end gap-2 px-6">
       <button
         onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
         disabled={currentPage === 1}

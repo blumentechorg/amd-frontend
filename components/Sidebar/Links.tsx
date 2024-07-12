@@ -18,6 +18,7 @@ import { LogoIcon } from "components/Icons/Icons"
 const links = [
   { name: "Dashboard", href: "/dashboard", icon: DashboardIcon },
   { name: "Estates", href: "/estates", icon: EstatesIcon },
+  { name: "Rents", href: "/rents", icon: HomeIcon },
   { name: "Properties", href: "/properties", icon: HomeIcon },
   { name: "Utilities", href: "/utilities", icon: UtilityIcon },
 ]
