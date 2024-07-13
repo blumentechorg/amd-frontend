@@ -349,3 +349,19 @@ body {
 .clash-font {
   font-family: "Clash Display", sans-serif;
 }
+
+.arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  vertical-align: middle;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid currentColor;
+  transition: transform 0.2s;
+}
+
+.arrow.down {
+  transform: rotate(180deg);
+}

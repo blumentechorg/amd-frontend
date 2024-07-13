@@ -180,6 +180,7 @@ export default function CustomTable({ columns, data, showDropdown = true, tableT
                     } 
                    ${column.accessor === "rentStatus" && row.rentStatus === "Overdue" ? "bg-[#FF002E] text-white" : ""} 
                    ${column.accessor === "rentStatus" && row.rentStatus === "Vacant" ? "text-[#FF0000]" : ""}
+                   ${column.accessor === "rentStatus" && row.rentStatus === "Failed" ? "bg-[#FF6A5A] text-white" : ""}
                    ${column.accessor === "rentStatus" && row.rentStatus === "Occupied" ? "text-[#0BB197]" : ""}
                    `}
                   >

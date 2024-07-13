@@ -148,12 +148,12 @@ const PropertyDetails = ({ params }: PropertyProps) => {
 
   return (
     <div className="flex min-h-screen">
-      <section className="flex-1">
+      <section className="">
         <div className="flex w-full flex-col">
           <DashboardNav />
           <div className="flex">
             <SideBar />
-            <div className="flex w-full gap-6  px-10 max-md:flex-col max-md:px-4 max-md:pt-6 md:mb-16">
+            <div className="flex w-full gap-6  px-10 max-md:flex-col max-md:px-4 max-md:pt-6 ">
               <div className="w-full ">
                 <div className="my-7 flex items-center justify-between">
                   <button onClick={handleGoBack} className="redirect flex items-center gap-3">

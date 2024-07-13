@@ -141,7 +141,7 @@ const DashboardMain: React.FC = () => {
                   <div className="mb-4">
                     <h5 className="font-semibold text-[#044982]">{account.name}</h5>
                   </div>
-                  <Image src="Icons/Graph-green.svg" width={24} height={24} alt="" />
+                  <Image src="/Icons/Graph-green.svg" width={24} height={24} alt="" />
                 </div>
                 <div className="flex items-end justify-between">
                   <div>
@@ -203,7 +203,7 @@ const DashboardMain: React.FC = () => {
                   <div className="mb-4">
                     <h5 className="font-semibold text-[#044982]">{account.name}</h5>
                   </div>
-                  <Image src="Icons/Graph1.svg" width={24} height={24} alt="" />
+                  <Image src="/Icons/Graph1.svg" width={24} height={24} alt="" />
                 </div>
                 <div className="flex items-end justify-between">
                   <div>
@@ -265,7 +265,7 @@ const DashboardMain: React.FC = () => {
                   <div className="mb-4">
                     <h5 className="font-semibold text-[#044982]">{account.name}</h5>
                   </div>
-                  <Image src="Icons/Graph1.svg" width={24} height={24} alt="" />
+                  <Image src="/Icons/Graph1.svg" width={24} height={24} alt="" />
                 </div>
                 <div className="flex items-end justify-between">
                   <div>

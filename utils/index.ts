@@ -581,34 +581,54 @@ export const Accounts = [
   {
     id: 1,
     name: "Total Revenue",
-
     balance: "₦126,432,100",
-
     status: "income",
   },
   {
     id: 2,
     name: "Expenses",
-
     balance: "₦126,432,100",
-
     status: "expense",
   },
 
   {
     id: 3,
     name: "Net Income",
-
     balance: "₦126,432,100",
-
     status: "income",
   },
   {
     id: 4,
     name: "Revenue Today",
-
     balance: "₦126,432,100",
+    status: "income",
+  },
+]
 
+export const PowerUtility = [
+  {
+    id: 1,
+    name: "Total Purchased",
+    balance: "₦126,432,100",
+    status: "income",
+  },
+  {
+    id: 2,
+    name: "Total Successful",
+    balance: "₦126,432,100",
+    status: "income",
+  },
+
+  {
+    id: 3,
+    name: "Total Failed",
+    balance: "₦126,432,100",
+    status: "expense",
+  },
+  {
+    id: 4,
+    name: "Total Complaints",
+    balance: "13",
     status: "income",
   },
 ]

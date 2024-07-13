@@ -1,16 +1,7 @@
-// import React from "react"
-
-// const Sidebar = () => {
-//   return <div className="h-auto w-[274px] bg-[#044982] px-16">Sidebar</div>
-// }
-
-// export default Sidebar
-
 "use client"
 import Link from "next/link"
 import React, { useState } from "react"
 import { Links, SecondLinks } from "./Links"
-
 import clsx from "clsx"
 
 const SideBar = () => {
