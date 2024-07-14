@@ -14,6 +14,7 @@ import {
   ServiceIcon,
   SupportIcon,
   UtilityIcon,
+  VisitorIcon,
 } from "./Icons"
 import { LogoIcon } from "components/Icons/Icons"
 
@@ -37,7 +38,7 @@ const links = [
 const secondlinks = [
   { name: "Chats", href: "/chats", icon: ChatIcon },
   { name: "Service Charge", href: "/service-charge", icon: ServiceIcon },
-  { name: "Support", href: "/support", icon: SupportIcon },
+  { name: "Visitors Management", href: "/visitors-management", icon: VisitorIcon },
   { name: "Admin", href: "/admin", icon: AdminIcon },
   { name: "Logout", href: "/logout", icon: LogoutIcon },
 ]

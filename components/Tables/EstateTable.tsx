@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react"
 import MoreVertIcon from "@mui/icons-material/MoreVert"
 import ReceiptModal from "components/Modals/ViewReceiptModal"
 import { useRouter } from "next/navigation"
+import ViewMaintenanceModal from "components/Modals/ViewMaintenanceModal"
 
 interface Column {
   Header: string
@@ -24,6 +25,7 @@ export default function CustomTable({ columns, data, showDropdown = true, tableT
   const dropdownRef = useRef<HTMLDivElement>(null)
   const [isReceiptModalOpen, setIsReceiptModalOpen] = useState(false)
   const [selectedReceiptData, setSelectedReceiptData] = useState<any>(null)
+  const [isMaintenanceModalOpen, setIsMaintenanceModalOpen] = useState(false)
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -76,6 +78,13 @@ export default function CustomTable({ columns, data, showDropdown = true, tableT
     console.log("Opening receipt modal with data:", receiptData) // Debug log
     setSelectedReceiptData(receiptData)
     setIsReceiptModalOpen(true)
+  }
+
+  const handleViewMaintenance = (event: React.MouseEvent<HTMLButtonElement>, receiptData: any) => {
+    event.stopPropagation()
+    console.log("Opening receipt modal with data:", receiptData) // Debug log
+    setSelectedReceiptData(receiptData)
+    setIsMaintenanceModalOpen(true)
   }
 
   const paginatedData = filteredData.slice(0, itemsPerPage)
@@ -137,6 +146,31 @@ export default function CustomTable({ columns, data, showDropdown = true, tableT
             </button>
             <button className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">
               Remove Tenant
+            </button>
+          </div>
+        </div>
+      )
+    } else if (tableType === "service") {
+      return (
+        <div className="absolute right-0 z-10 mt-2 w-48 rounded-md bg-white shadow-lg">
+          <div className="py-1">
+            <button
+              className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
+              onClick={(event) => handleViewReceipt(event, row)}
+            >
+              Notify User
+            </button>
+            <button className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">
+              Generate Invoice
+            </button>
+            <button
+              onClick={(event) => handleViewMaintenance(event, row)}
+              className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
+            >
+              View Request
+            </button>
+            <button className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">
+              View Invoice
             </button>
           </div>
         </div>
@@ -206,6 +240,14 @@ export default function CustomTable({ columns, data, showDropdown = true, tableT
         <ReceiptModal
           isOpen={isReceiptModalOpen}
           onClose={() => setIsReceiptModalOpen(false)}
+          receiptData={selectedReceiptData}
+        />
+      )}
+
+      {isMaintenanceModalOpen && (
+        <ViewMaintenanceModal
+          isOpen={isMaintenanceModalOpen}
+          onClose={() => setIsMaintenanceModalOpen(false)}
           receiptData={selectedReceiptData}
         />
       )}
