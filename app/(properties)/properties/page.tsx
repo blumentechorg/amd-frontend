@@ -118,15 +118,15 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex min-h-screen">
-      <section className="flex-1">
-        <div className="flex w-full flex-col">
+    <section className="h-full w-full">
+      <div className="flex min-h-screen w-full">
+        <div className="flex  w-full flex-col">
           <DashboardNav />
           <div className="flex">
             <Sidebar />
-            <div className="flex w-full gap-6  px-10 max-md:flex-col max-md:px-4 max-md:pt-6 md:mb-16">
+            <div className="flex w-full gap-6  px-10 max-md:flex-col max-md:pt-6 max-sm:px-0 md:mb-16">
               <div className="w-full ">
-                <div className="my-7 flex items-center justify-between">
+                <div className="my-7 flex items-center justify-between max-sm:my-2 max-sm:px-4">
                   <h5 className="text-[28px] font-medium">Properties</h5>
                   <div className="relative"></div>
                   <div className="flex items-center gap-2">
@@ -151,7 +151,7 @@ export default function Dashboard() {
                 <div className="rounded-lg bg-white py-7">
                   <div className="mb-4 flex items-center justify-between px-6">
                     <div className="flex items-center gap-5">
-                      <div className="flex justify-center gap-2">
+                      <div className="flex justify-center gap-2 max-sm:hidden">
                         <div className="flex h-10 items-center">
                           <p>Show</p>
                         </div>
@@ -173,12 +173,12 @@ export default function Dashboard() {
                           value={searchQuery}
                           onChange={(e) => setSearchQuery(e.target.value)}
                           placeholder="Search..."
-                          className="h-[56px] w-[328px] rounded-md bg-[#F3F3F3] px-3 py-2 outline-none focus:outline-none"
+                          className="h-[56px] w-[328px] rounded-md bg-[#F3F3F3] px-3 py-2 outline-none focus:outline-none max-md:w-full max-sm:h-10 max-sm:w-[200px]"
                         />
                       </div>
                     </div>
                     <div className="flex items-center gap-10">
-                      <div className="relative">
+                      <div className="relative max-sm:hidden">
                         <div className="flex">
                           <div className="rounded-s-md bg-[#044982] p-2">
                             <p className="text-sm text-white">Sort</p>
@@ -190,9 +190,9 @@ export default function Dashboard() {
                       </div>
                       <button
                         onClick={() => setIsModalOpen(true)}
-                        className="button-rounded flex items-center gap-2 rounded-md "
+                        className="button-rounded flex items-center gap-2 rounded-md"
                       >
-                        Add new tenants
+                        <p className="max-sm:hidden">Add new tenants</p>
                         <Image src="/DashboardImages/Vector.svg" width={11.88} height={11.88} alt="" />
                       </button>
                     </div>
@@ -213,7 +213,7 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   )
 }

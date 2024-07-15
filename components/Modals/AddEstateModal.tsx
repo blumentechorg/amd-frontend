@@ -42,9 +42,9 @@ const AddEstateModal: React.FC<AddEstateModalProps> = ({ isOpen, onClose, onSave
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50  flex items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 z-50  flex items-center justify-center bg-black bg-opacity-50 ">
       <div
-        className="relative rounded-md bg-white p-10 xl:max-w-[783px]"
+        className="relative rounded-md bg-white p-10 max-sm:mx-8 max-sm:w-full max-sm:p-4  xl:max-w-[783px]"
         data-aos="fade-up"
         data-aos-duration="1000"
         data-aos-delay="500"
@@ -53,7 +53,7 @@ const AddEstateModal: React.FC<AddEstateModalProps> = ({ isOpen, onClose, onSave
           <IoClose size={16} />
         </button>
         <h2 className="mb-4 text-base font-medium">Add New Estate</h2>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 max-sm:grid-cols-1 lg:gap-3">
           <div className="search-bg mb-3  h-[56px] items-center  justify-between  rounded-[10px] px-3 py-2 hover:border-[#EEC202] focus:border-[#EEC202] focus:bg-[#FBFAFC] max-sm:mb-2 xl:w-[328px]">
             <p className="text-xs text-[#9D99AC]">Estate Name</p>
             <div className="flex">
@@ -79,7 +79,7 @@ const AddEstateModal: React.FC<AddEstateModalProps> = ({ isOpen, onClose, onSave
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 max-sm:grid-cols-1 lg:gap-3">
           <div className="search-bg mb-3  h-[56px] items-center  justify-between  rounded-[10px] px-3 py-2 hover:border-[#EEC202] focus:border-[#EEC202] focus:bg-[#FBFAFC] max-sm:mb-2 xl:w-[328px]">
             <p className="text-xs text-[#9D99AC]">Houses Occupied</p>
             <div className="flex">
@@ -105,7 +105,7 @@ const AddEstateModal: React.FC<AddEstateModalProps> = ({ isOpen, onClose, onSave
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 max-sm:grid-cols-1 lg:gap-3">
           <div className="search-bg mb-3  h-[56px] items-center  justify-between  rounded-[10px] px-3 py-2 hover:border-[#EEC202] focus:border-[#EEC202] focus:bg-[#FBFAFC] max-sm:mb-2 xl:w-[328px]">
             <p className="text-xs text-[#9D99AC]">Province</p>
             <div className="flex">
@@ -131,7 +131,7 @@ const AddEstateModal: React.FC<AddEstateModalProps> = ({ isOpen, onClose, onSave
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 max-sm:grid-cols-1 lg:gap-3">
           <div className="search-bg mb-3  h-[56px] items-center  justify-between  rounded-[10px] px-3 py-2 hover:border-[#EEC202] focus:border-[#EEC202] focus:bg-[#FBFAFC] max-sm:mb-2 xl:w-[328px]">
             <p className="text-xs text-[#9D99AC]">State</p>
             <div className="flex">
@@ -164,8 +164,11 @@ const AddEstateModal: React.FC<AddEstateModalProps> = ({ isOpen, onClose, onSave
             placeholder="Apo Area 1 Legislative Quaters, Abuja Nigeria"
           ></textarea>
         </div>
-        <div className="mt-4 flex justify-center">
-          <button onClick={handleSave} className="button-rounded w-[227px] rounded px-10 py-2 text-white">
+        <div className="mt-4 flex w-full justify-center">
+          <button
+            onClick={handleSave}
+            className="button-rounded rounded px-10 py-2 text-white max-sm:w-full lg:w-[227px]"
+          >
             Save
           </button>
         </div>

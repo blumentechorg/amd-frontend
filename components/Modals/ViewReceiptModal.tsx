@@ -22,7 +22,7 @@ const ReceiptModal: React.FC<ReceiptModalProps> = ({ isOpen, onClose, receiptDat
   return (
     <div className="fixed inset-0 z-50  flex items-center justify-center bg-black bg-opacity-50">
       <div
-        className="relative rounded-md bg-white  xl:max-w-[783px]"
+        className="relative rounded-md bg-white max-sm:mx-8 max-sm:w-full xl:max-w-[783px]"
         data-aos="fade-up"
         data-aos-duration="1000"
         data-aos-delay="500"
@@ -35,7 +35,7 @@ const ReceiptModal: React.FC<ReceiptModalProps> = ({ isOpen, onClose, receiptDat
           <p>{receiptData.tenant}</p>
         </div>
         <div className="h-[1px] w-full bg-[#000000] opacity-5"></div>
-        <div className="px-10 py-5">
+        <div className="px-10 py-5 max-sm:px-4">
           <div className="flex w-full items-center justify-center">
             <Image src="/DashboardImages/Success.svg" width={148} height={143.79} alt="profile" />
           </div>
@@ -82,8 +82,8 @@ const ReceiptModal: React.FC<ReceiptModalProps> = ({ isOpen, onClose, receiptDat
 
           {/* Add more receipt details as needed */}
         </div>
-        <div className="mb-4 flex justify-center px-10">
-          <button className="button-rounded w-full rounded  py-2 text-white">Download</button>
+        <div className="mb-4 flex w-full justify-center px-10">
+          <button className="button-rounded w-full rounded py-2  text-white max-sm:w-full">Download</button>
         </div>
       </div>
     </div>

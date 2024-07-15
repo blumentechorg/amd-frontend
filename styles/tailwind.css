@@ -215,7 +215,7 @@ body {
 }
 
 .button-rounded {
-  @apply flex h-[58px] items-center justify-center rounded-lg bg-[#044982] px-10 text-[#FFFFFF] transition-colors hover:bg-[#2952CC] hover:text-[#FFFFFF] focus:bg-[#2952CC] active:bg-[#061E66];
+  @apply flex h-[58px] items-center justify-center rounded-lg bg-[#044982] text-[#FFFFFF] transition-colors hover:bg-[#2952CC] hover:text-[#FFFFFF] focus:bg-[#2952CC] active:bg-[#061E66] max-sm:h-10 max-sm:w-10 lg:px-10;
 }
 
 .button-outline {
@@ -364,4 +364,17 @@ body {
 
 .arrow.down {
   transform: rotate(180deg);
+}
+
+@media (max-width: 600px) {
+  th:nth-child(3),
+  td:nth-child(3),
+  th:nth-child(7),
+  td:nth-child(7),
+  th:nth-child(4),
+  td:nth-child(4),
+  th:nth-child(6),
+  td:nth-child(6) {
+    display: none;
+  }
 }

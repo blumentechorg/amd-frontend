@@ -192,7 +192,7 @@ export default function CustomTable({ columns, data, showDropdown = true, tableT
                 <th
                   key={column.Header}
                   onClick={() => handleSort(column.accessor as string)}
-                  className={`cursor-pointer border-l bg-[#2D9DFD0D] px-4 py-3 text-left ${
+                  className={`cursor-pointer border-l bg-[#2D9DFD0D] px-4 py-3 text-left max-sm:text-xs ${
                     columnIndex === 0 ? "gap-4 pl-4" : ""
                   }`}
                 >
@@ -209,7 +209,7 @@ export default function CustomTable({ columns, data, showDropdown = true, tableT
                 {columns.map((column, cellIndex) => (
                   <td
                     key={`${column.Header}-${index}`}
-                    className={`border-l border-gray-200 px-4 py-3 text-left ${
+                    className={`border-l border-gray-200 px-4 py-3 text-left max-sm:text-xs ${
                       cellIndex === 0 ? "pl-4" : "font-medium"
                     } 
                    ${column.accessor === "rentStatus" && row.rentStatus === "Overdue" ? "bg-[#FF002E] text-white" : ""} 
