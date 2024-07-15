@@ -103,21 +103,21 @@ export default function Dashboard() {
   }, [])
 
   return (
-    <div className="flex min-h-screen">
-      <section className="flex-1">
-        <div className="flex w-full flex-col">
+    <section className="h-full w-full">
+      <div className="flex min-h-screen w-full">
+        <div className="flex  w-full flex-col">
           <DashboardNav />
           <div className="flex">
             <Sidebar />
 
-            <div className="flex w-full gap-6 max-md:flex-col max-md:px-4 max-md:pt-6 md:mb-16 ">
+            <div className="flex w-full gap-6 max-md:flex-col max-md:px-0  md:mb-16 ">
               <div className="w-full">
                 <DashboardMain />
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   )
 }

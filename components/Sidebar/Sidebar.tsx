@@ -11,19 +11,16 @@ const SideBar = () => {
     <div
       onMouseEnter={() => setIsCollapsed(false)}
       onMouseLeave={() => setIsCollapsed(true)}
-      className={clsx("sidebar flex h-full flex-col justify-between border-0 border-[#424343]  ", {
+      className={clsx("sidebar flex h-full flex-col border-0  border-[#424343] max-sm:hidden  ", {
         "w-20": isCollapsed,
         "w-72": !isCollapsed,
       })}
     >
-      <div className="h-full  justify-between border-0 border-red-700 lg:mt-6 lg:h-auto lg:space-y-4">
-        <div className="h-full border-0 border-primary-700 lg:h-auto lg:space-y-1 ">
+      <div className="mt-6  h-auto space-y-4 border-0 border-red-700">
+        <div className=" h-auto space-y-1 border-0 border-primary-700 ">
           <Links isCollapsed={isCollapsed} />
-        </div>
+          <div className="mx-4 my-4 flex h-[1px] w-[90%] bg-[#F2F2F2] opacity-5"></div>
 
-        <div className="mx-4 flex h-[1px] w-[90%] bg-[#F2F2F2] opacity-5"></div>
-
-        <div className=" border-0 border-primary-700  lg:space-y-1 ">
           <SecondLinks isCollapsed={isCollapsed} />
         </div>
       </div>

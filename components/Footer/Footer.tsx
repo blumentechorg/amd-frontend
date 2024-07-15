@@ -22,7 +22,9 @@ const Footer = () => {
   }
   return (
     <div className="fixed bottom-0 w-full bg-[#1D2169] px-7 py-4 max-sm:bottom-2 max-sm:right-0">
-      <p className="text-center text-[#F3F3F3]">Dantata Estate Insight: Unleash the Power of Seamless Management</p>
+      <p className="text-center text-[#F3F3F3]">
+        AMD Facility Management Service: Unleash the Power of Seamless Management
+      </p>
     </div>
   )
 }

@@ -151,9 +151,9 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex min-h-screen">
-      <section className="flex-1">
-        <div className="flex w-full flex-col">
+    <section className="h-full w-full">
+      <div className="flex min-h-screen w-full">
+        <div className="flex  w-full flex-col">
           <DashboardNav />
           <div className="flex">
             <Sidebar />
@@ -169,7 +169,7 @@ export default function Dashboard() {
                   </div>
                 </div>
 
-                <div className="mb-4 w-full overflow-hidden rounded-md">
+                <div className="mb-4 h-auto w-full overflow-hidden rounded-md">
                   <LoadScript googleMapsApiKey="AIzaSyBKHZ5C24eYH-MccKBSniBl3mT5MjBhJYY">
                     <GoogleMap
                       mapContainerStyle={{ height: "350px", width: "100%" }}
@@ -206,7 +206,7 @@ export default function Dashboard() {
                           value={searchQuery}
                           onChange={(e) => setSearchQuery(e.target.value)}
                           placeholder="Search..."
-                          className="h-[56px] w-[328px] rounded-md bg-[#F3F3F3] px-3 py-2 outline-none focus:outline-none"
+                          className="h-[56px] w-[328px] rounded-md bg-[#F3F3F3] px-3 py-2 outline-none focus:outline-none max-sm:w-[200px]"
                         />
                       </div>
                     </div>
@@ -234,7 +234,7 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   )
 }

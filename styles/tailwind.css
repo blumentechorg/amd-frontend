@@ -110,7 +110,7 @@ body {
 }
 
 .dashboard-style {
-  @apply flex items-center justify-center whitespace-nowrap border-0 border-black px-2  py-4 text-[#D0D1DB]  transition duration-300 hover:text-[#eec202] max-md:my-2 max-md:h-11 max-md:items-center max-sm:grow lg:justify-normal lg:space-x-2;
+  @apply flex items-center  whitespace-nowrap border-0 border-black px-2  py-4 text-[#D0D1DB]  transition duration-300 hover:text-[#eec202] max-md:my-2 max-md:h-11 max-md:items-center max-sm:grow lg:justify-normal lg:space-x-2;
 }
 
 .active-dashboard {
@@ -126,7 +126,7 @@ body {
 }
 
 .small-card {
-  @apply mb-6 h-[188px] w-full rounded-[10px] bg-white px-[26px]  py-3 shadow;
+  @apply mb-6 h-auto w-full rounded-[10px] bg-white px-[26px] py-3 shadow max-lg:mb-0  max-sm:h-auto max-sm:px-[14px];
 }
 
 .search-bg {
@@ -215,7 +215,7 @@ body {
 }
 
 .button-rounded {
-  @apply flex h-[58px] items-center justify-center rounded-lg bg-[#044982] px-10 text-[#FFFFFF] transition-colors hover:bg-[#2952CC] hover:text-[#FFFFFF] focus:bg-[#2952CC] active:bg-[#061E66]  max-sm:h-10 max-sm:w-full;
+  @apply flex h-[58px] items-center justify-center rounded-lg bg-[#044982] px-10 text-[#FFFFFF] transition-colors hover:bg-[#2952CC] hover:text-[#FFFFFF] focus:bg-[#2952CC] active:bg-[#061E66];
 }
 
 .button-outline {
@@ -246,7 +246,7 @@ body {
 }
 
 .dashboardnav {
-  @apply relative w-screen px-6 py-6 sm:bg-[#FFFFFF];
+  @apply relative w-full sm:bg-[#F2F6FD];
 }
 
 .properties {

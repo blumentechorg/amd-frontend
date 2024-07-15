@@ -571,7 +571,7 @@ export const Maintenance = [
   },
   {
     id: 4,
-    name: "Total Request Today",
+    name: "Request Today",
     balance: "30",
     status: "income",
   },

@@ -56,7 +56,7 @@ export function Links({ isCollapsed }: LinksProps) {
   }
 
   return (
-    <div className="flex flex-row border-black lg:flex-col">
+    <div className="flex  flex-col border-black">
       {links.map((link) => {
         const LinkIcon = link.icon
         const isActive = pathname.startsWith(link.href)
@@ -112,7 +112,7 @@ export function Links({ isCollapsed }: LinksProps) {
 export function SecondLinks({ isCollapsed }: LinksProps) {
   const pathname = usePathname()
   return (
-    <div className="flex flex-row border-black lg:h-80 lg:flex-col">
+    <div className="flex  flex-col border-black lg:h-80">
       {secondlinks.map((link) => {
         const LinkIcon = link.icon
         const isActive = pathname.startsWith(link.href)

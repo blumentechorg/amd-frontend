@@ -6,6 +6,7 @@ import Link from "next/link"
 import AOS from "aos"
 import "aos/dist/aos.css"
 import Footer from "components/Footer/Footer"
+import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined"
 
 const Page: React.FC = () => {
   const [username, setUsername] = useState("")
@@ -62,12 +63,12 @@ const Page: React.FC = () => {
     <>
       <div className="flex h-screen w-full items-center justify-center bg-[#22266A]">
         <div
-          className="auth flex rounded-[20px] bg-[#FFFFFF] max-sm:w-full xl:max-w-[434px]"
+          className="auth flex rounded-[20px] bg-[#FFFFFF] max-sm:w-[95%] xl:max-w-[434px]"
           data-aos="fade-up"
           data-aos-duration="1000"
           data-aos-delay="500"
         >
-          <div className="w-full justify-center px-[53px] py-[60px]">
+          <div className="w-full justify-center px-[53px] py-[60px] max-sm:px-7">
             <div className="mb-8 flex items-center justify-center">
               <Image src="/AuthImages/amd-logo.png" width={250} height={74} alt="profile" />
             </div>
@@ -103,13 +104,17 @@ const Page: React.FC = () => {
                     onChange={handlePasswordChange}
                   />
                   <button type="button" className="focus:outline-none" onClick={togglePasswordVisibility}>
-                    <Image
-                      className="icon-style"
-                      src={isPasswordVisible ? "AuthImages/eye-open-line.svg" : "AuthImages/eye-close-line.svg"}
-                      width={24}
-                      height={24}
-                      alt="toggle password visibility"
-                    />
+                    {isPasswordVisible ? (
+                      <RemoveRedEyeOutlinedIcon />
+                    ) : (
+                      <Image
+                        className="icon-style"
+                        src="/AuthImages/eye-close-line.svg"
+                        width={24}
+                        height={24}
+                        alt="toggle password visibility"
+                      />
+                    )}
                   </button>
                 </div>
               </div>
@@ -126,13 +131,17 @@ const Page: React.FC = () => {
                     onChange={handlePasswordChange}
                   />
                   <button type="button" className="focus:outline-none" onClick={togglePasswordVisibility}>
-                    <Image
-                      className="icon-style"
-                      src={isPasswordVisible ? "AuthImages/eye-open-line.svg" : "AuthImages/eye-close-line.svg"}
-                      width={24}
-                      height={24}
-                      alt="toggle password visibility"
-                    />
+                    {isPasswordVisible ? (
+                      <RemoveRedEyeOutlinedIcon />
+                    ) : (
+                      <Image
+                        className="icon-style"
+                        src="/AuthImages/eye-close-line.svg"
+                        width={24}
+                        height={24}
+                        alt="toggle password visibility"
+                      />
+                    )}
                   </button>
                 </div>
               </div>

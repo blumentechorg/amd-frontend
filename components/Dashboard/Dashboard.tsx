@@ -89,14 +89,14 @@ const DashboardMain: React.FC = () => {
   const renderFinancialMetrics = () => {
     return (
       <div
-        className="h-auto w-full bg-[#F7F7F9] px-10"
+        className="h-auto w-full bg-[#F7F7F9] px-10 max-sm:px-4"
         data-aos="fade-in"
         data-aos-duration="1000"
         data-aos-delay="500"
       >
-        <div className="my-7 flex items-center justify-between">
-          <h5 className="text-[28px] font-medium">Financial Metrics</h5>
-          <div className="relative">
+        <div className="my-7 flex w-full items-center justify-between">
+          <h5 className="text-[28px] font-medium max-sm:text-lg">Financial Metrics</h5>
+          <div className="relative max-sm:hidden">
             <div className="flex">
               <div className="rounded-s-md bg-[#044982] p-2">
                 <p className="text-sm text-white">Specific</p>
@@ -107,7 +107,7 @@ const DashboardMain: React.FC = () => {
               </div>
             </div>
             {dropdownVisible && (
-              <div className="absolute right-0 mt-2 w-48 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+              <div className="absolute right-0 mt-2 w-48 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 ">
                 <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                   {["All", "Rent", "Water", "Power", "Service"].map((option) => (
                     <p
@@ -123,32 +123,34 @@ const DashboardMain: React.FC = () => {
             )}
           </div>
           <div className="flex items-center gap-2 ">
-            <p className="opacity-50">AMD </p>
+            <p className="opacity-50 max-sm:text-sm">AMD </p>
             <KeyboardArrowRightIcon className="opacity-50" />
-            <p className="opacity-50">Dashboard</p>
+            <p className="opacity-50 max-sm:text-sm">Dashboard</p>
           </div>
         </div>
-        <div className="flex w-full gap-3">
+        <div className="flex w-full gap-3 max-lg:grid max-lg:grid-cols-2">
           {Accounts.map((account: PaymentAccount, index: number) => (
             <div key={account.id} className="flex w-full cursor-pointer gap-2">
               <div
                 onClick={() => handlePaymentClick(account.id)}
-                className={`small-card rounded-md p-2 transition duration-500 hover:border-none hover:shadow-xl md:border ${
+                className={`small-card  rounded-md p-2 transition duration-500 hover:border-none hover:shadow-xl md:border ${
                   index === 0 ? "border-none shadow-2xl" : ""
                 }`}
               >
-                <div className="mb-[19px] flex items-start justify-between">
-                  <div className="mb-4">
+                <div className="mb-[19px] flex items-start justify-between max-sm:mb-2">
+                  <div className="mb-4 max-sm:mb-1">
                     <h5 className="font-semibold text-[#044982]">{account.name}</h5>
                   </div>
                   <Image src="/Icons/Graph-green.svg" width={24} height={24} alt="" />
                 </div>
                 <div className="flex items-end justify-between">
                   <div>
-                    <h5 className={`text-xl font-bold ${getStatusColor(account.status)}`}>{account.balance}</h5>
+                    <h5 className={`text-xl font-bold max-sm:text-lg ${getStatusColor(account.status)}`}>
+                      {account.balance}
+                    </h5>
                   </div>
                 </div>
-                <div className="my-5 h-[1px] w-full bg-black opacity-5"></div>
+                <div className="my-5 h-[1px] w-full bg-black opacity-5 max-sm:my-2"></div>
                 <div className="flex items-center gap-4">
                   <div
                     className={`flex w-[72px] items-center justify-center rounded-md px-1 py-1 ${getBgColor(
@@ -162,7 +164,7 @@ const DashboardMain: React.FC = () => {
                     )}
                     <p className="text-base font-medium text-white">2.4%</p>
                   </div>
-                  <p className="text-[#707070]">From previous period</p>
+                  <p className="text-[#707070] max-sm:text-xs">From previous period</p>
                 </div>
               </div>
             </div>
@@ -176,21 +178,21 @@ const DashboardMain: React.FC = () => {
   const renderOccupancyRate = () => {
     return (
       <div
-        className="h-auto w-full bg-[#F7F7F9] px-10"
+        className="h-auto w-full bg-[#F7F7F9] px-10 max-sm:px-4"
         data-aos="fade-in"
         data-aos-duration="1000"
         data-aos-delay="500"
       >
         <div className="my-7 flex items-center justify-between">
-          <h5 className="text-[28px] font-medium">Occupancy Rate</h5>
+          <h5 className="text-[28px] font-medium max-sm:text-lg">Occupancy Rate</h5>
           <div className="relative"></div>
           <div className="flex items-center gap-2 ">
-            <p className="opacity-50">AMD </p>
+            <p className="opacity-50 max-sm:text-sm">AMD </p>
             <KeyboardArrowRightIcon className="opacity-50" />
-            <p className="opacity-50">Dashboard</p>
+            <p className="opacity-50 max-sm:text-sm">Dashboard</p>
           </div>
         </div>
-        <div className="flex w-full gap-3">
+        <div className="flex w-full gap-3 max-lg:grid max-lg:grid-cols-2">
           {Occupancy.map((account: PaymentAccount, index: number) => (
             <div key={account.id} className="flex w-full cursor-pointer gap-2">
               <div
@@ -199,18 +201,20 @@ const DashboardMain: React.FC = () => {
                   index === 0 ? "border-none shadow-2xl" : ""
                 }`}
               >
-                <div className="mb-[19px] flex items-start justify-between">
-                  <div className="mb-4">
+                <div className="mb-[19px] flex items-start justify-between max-sm:mb-2">
+                  <div className="mb-4 max-sm:mb-1">
                     <h5 className="font-semibold text-[#044982]">{account.name}</h5>
                   </div>
                   <Image src="/Icons/Graph1.svg" width={24} height={24} alt="" />
                 </div>
                 <div className="flex items-end justify-between">
                   <div>
-                    <h5 className={`text-xl font-bold ${getStatusColor(account.status)}`}>{account.balance}</h5>
+                    <h5 className={`text-xl font-bold max-sm:text-lg ${getStatusColor(account.status)}`}>
+                      {account.balance}
+                    </h5>
                   </div>
                 </div>
-                <div className="my-5 h-[1px] w-full bg-black opacity-5"></div>
+                <div className="my-5 h-[1px] w-full bg-black opacity-5 max-sm:my-2"></div>
                 <div className="flex items-center gap-4">
                   <div
                     className={`flex w-[72px] items-center justify-center rounded-md px-1 py-1 ${getBgColor(
@@ -224,7 +228,7 @@ const DashboardMain: React.FC = () => {
                     )}
                     <p className="text-base font-medium text-white">2.4%</p>
                   </div>
-                  <p className="text-[#707070]">From previous period</p>
+                  <p className="text-[#707070] max-sm:text-xs">From previous period</p>
                 </div>
               </div>
             </div>
@@ -238,21 +242,21 @@ const DashboardMain: React.FC = () => {
   const renderMaintenanceStatus = () => {
     return (
       <div
-        className="h-auto w-full bg-[#F7F7F9] px-10"
+        className="h-auto w-full bg-[#F7F7F9] px-10 max-sm:px-4"
         data-aos="fade-in"
         data-aos-duration="1000"
         data-aos-delay="500"
       >
         <div className="my-7 flex items-center justify-between">
-          <h5 className="text-[28px] font-medium">Occupancy Rate</h5>
+          <h5 className="text-[28px] font-medium max-sm:text-lg">Occupancy Rate</h5>
           <div className="relative"></div>
           <div className="flex items-center gap-2 ">
-            <p className="opacity-50">AMD </p>
+            <p className="opacity-50 max-sm:text-sm">AMD </p>
             <KeyboardArrowRightIcon className="opacity-50" />
-            <p className="opacity-50">Dashboard</p>
+            <p className="opacity-50 max-sm:text-sm">Dashboard</p>
           </div>
         </div>
-        <div className="flex w-full gap-3">
+        <div className="flex w-full gap-3 max-lg:grid max-lg:grid-cols-2">
           {Maintenance.map((account: PaymentAccount, index: number) => (
             <div key={account.id} className="flex w-full cursor-pointer gap-2">
               <div
@@ -261,18 +265,20 @@ const DashboardMain: React.FC = () => {
                   index === 0 ? "border-none shadow-2xl" : ""
                 }`}
               >
-                <div className="mb-[19px] flex items-start justify-between">
-                  <div className="mb-4">
+                <div className="mb-[19px] flex items-start justify-between max-sm:mb-2">
+                  <div className="mb-4 max-sm:mb-1">
                     <h5 className="font-semibold text-[#044982]">{account.name}</h5>
                   </div>
                   <Image src="/Icons/Graph1.svg" width={24} height={24} alt="" />
                 </div>
                 <div className="flex items-end justify-between">
                   <div>
-                    <h5 className={`text-xl font-bold ${getStatusColor(account.status)}`}>{account.balance}</h5>
+                    <h5 className={`text-xl font-bold max-sm:text-lg ${getStatusColor(account.status)}`}>
+                      {account.balance}
+                    </h5>
                   </div>
                 </div>
-                <div className="my-5 h-[1px] w-full bg-black opacity-5"></div>
+                <div className="my-5 h-[1px] w-full bg-black opacity-5 max-sm:my-2"></div>
                 <div className="flex items-center gap-4">
                   <div
                     className={`flex w-[72px] items-center justify-center rounded-md px-1 py-1 ${getBgColor(
@@ -286,7 +292,7 @@ const DashboardMain: React.FC = () => {
                     )}
                     <p className="text-base font-medium text-white">2.4%</p>
                   </div>
-                  <p className="text-[#707070]">From previous period</p>
+                  <p className="text-[#707070] max-sm:text-xs">From previous period</p>
                 </div>
               </div>
             </div>
@@ -299,7 +305,7 @@ const DashboardMain: React.FC = () => {
 
   return (
     <div className="flex w-full flex-col">
-      <div className="tab-bg  flex w-[345px] items-center gap-3  p-1 ">
+      <div className="tab-bg  flex w-[345px] items-center gap-3 p-1   max-sm:w-full ">
         <button
           className={`${activeTab === "financial-metrics" ? "active-tab" : "inactive-tab"}`}
           onClick={() => setActiveTab("financial-metrics")}
