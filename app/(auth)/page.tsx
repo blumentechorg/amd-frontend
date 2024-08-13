@@ -37,16 +37,26 @@ const Page: React.FC = () => {
     setError(null)
 
     try {
-      // Simulate an API call or some asynchronous action
+      const response = await fetch("https://amd-backend-1.onrender.com/custom-user/sign-in/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      })
+
+      if (!response.ok) {
+        throw new Error("Failed to sign in. Please try again.")
+      }
+
       setShowSuccessNotification(true)
       await new Promise((resolve) => setTimeout(resolve, 3000))
 
       setLoading(false)
 
-      // Redirect to the success page
       router.push("/dashboard")
-    } catch (error) {
-      setError("Failed to sign in. Please try again.")
+    } catch (error: any) {
+      setError(error.message)
       setShowErrorNotification(true)
       setLoading(false)
     }
@@ -58,6 +68,18 @@ const Page: React.FC = () => {
       once: true,
     })
   }, [])
+
+  // UseEffect to automatically hide notifications after a timeout
+  useEffect(() => {
+    if (showSuccessNotification || showErrorNotification) {
+      const timer = setTimeout(() => {
+        setShowSuccessNotification(false)
+        setShowErrorNotification(false)
+      }, 5000) // Notifications will disappear after 5 seconds
+
+      return () => clearTimeout(timer) // Clean up the timeout if component unmounts
+    }
+  }, [showSuccessNotification, showErrorNotification])
 
   return (
     <>
@@ -109,7 +131,7 @@ const Page: React.FC = () => {
                     ) : (
                       <Image
                         className="icon-style"
-                        src="/AuthImages/eye-close-line.svg"
+                        src="/AuthImages/eye-close-line.png"
                         width={24}
                         height={24}
                         alt="toggle password visibility"
@@ -151,9 +173,9 @@ const Page: React.FC = () => {
         </div>
       )}
       {showErrorNotification && (
-        <div className="animation-fade-in 0 absolute bottom-16 m-5 flex h-[50px] w-[339px] transform items-center justify-center gap-2 rounded-md border border-[#D14343] bg-[#FEE5E5] text-[#D14343] shadow-[#05420514] md:right-16">
-          <Image src="/check-circle-failed.svg" width={16} height={16} alt="dekalo" />
+        <div className="animation-fade-in absolute bottom-16 m-5 flex h-[50px] w-[339px] transform items-center justify-center gap-2 rounded-md border border-[#D14343] bg-[#FEE5E5] text-[#D14343] shadow-[#05420514] md:right-16">
           <span className="clash-font text-sm text-[#D14343]">{error}</span>
+          <Image src="/AuthImages/failed.png" width={28.26} height={28.26} alt="dekalo" />
         </div>
       )}
     </>
