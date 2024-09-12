@@ -65,7 +65,7 @@ export default function CustomTable({ columns, data, showDropdown = true, tableT
   const filteredData = sortedData.filter((item) => {
     return columns.some((column) => {
       const value = typeof column.accessor === "function" ? column.accessor(item) : item[column.accessor]
-      return value.toString().toLowerCase().includes(searchQuery.toLowerCase())
+      return value?.toString().toLowerCase().includes(searchQuery.toLowerCase())
     })
   })
 
